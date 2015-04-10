@@ -1,0 +1,20 @@
+{
+    "name": "evgkan/yii2-adminwidgets",
+    "description": "Yii2 widgets for admin panel",
+    "authors": [
+        {
+            "name": "Evgeny Kangin",
+            "email": "evgkan@list.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+		"asdf-studio/yii2-admin-module": "*",
+    },
+    "autoload": {
+        "psr-4": {
+            "evgkan\\widgets\\": ""
+        }
+    }
+}

@@ -4,38 +4,38 @@ namespace evgkan\widgets;
 
 use Yii;
 use yii\helpers\Html;
+use yii\widgets\InputWidget;
 
 /**
- * Class Select
- * @package asdfstudio\admin\widgets
- *
- * Renders active select widget with related models
+ * Class ChekboxList
+ * @package evgkan\widgets
  */
-class CheckboxList extends \asdfstudio\admin\forms\widgets\Base
+class CheckboxList extends InputWidget
 {
-    /**
-     * Items array
-     * @var array
-     */
     public $items = [];
+    public $options = [];
+    public $window = [
+        'enable' => true,
+        'height' => '200px',
+        'width' => 'auto',
+    ];
 
-    /**
-     *
-     * @var array
-     */
-    public $options =[];
-
-
-    /**
-     * @inheritdoc
-     */
-    public function renderInput($value, $attribute = null)
+    public function run()
     {
-        return Html::activeCheckboxList(
+        parent::run();
+        $attribute = null;
+        $result = Html::activeCheckboxList(
             $this->model,
             $attribute ? $attribute : $this->attribute,
             $this->items,
             $this->options
             );
+        if ($this->window['enable']) {
+            $result =
+                '<div class="form-control"
+                style="height:'.$this->window['height'].'; width:'.$this->window['width'].
+                '; overflow-y:scroll">'.$result.'</div>';
+        }
+        return $result;
     }
 }
